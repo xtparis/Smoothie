@@ -14,7 +14,7 @@ public class Smoothie {
 
     public void addYourBase() {
 //        basicIngredients.add("Almond Milk");
-//        basicIngredients.add("Cow Milk 20%");
+        basicIngredients.add("Cow Milk 20%");
 //        basicIngredients.add("Cow Milk 5%");
 //        basicIngredients.add("Coconut Milk");
     }
@@ -52,7 +52,7 @@ public class Smoothie {
 
         mySmoothie.addYourBase();
 
-        mySmoothie.addBasicIngredient("ADD YOUR FRUIT");
+        mySmoothie.addBasicIngredient("APPLE");
 
 
         // Make the smoothie
