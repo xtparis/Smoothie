@@ -1,0 +1,16 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+.idea
+
+# Ignore gitpod config file
+.gitpod.yml
+
+# Ignore all bin files
+bin/
+
+# Ignore Gradle build folder
+.gradle/
+
+# Ignore build output
+build/
