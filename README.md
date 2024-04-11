@@ -18,7 +18,8 @@ Follow the steps below to create your own smoothie recipe, commit changes and le
    ```
    git checkout -b yourName-smoothie
    ```
-
+### Open with IntelliJ
+Open the repo in intelliJ, it should be recognized as idea project.
 ## How It Works
 
 ### Smoothie Class Methods
@@ -36,7 +37,7 @@ In the `main` method:
 3. Call `mySmoothie.addBasicIngredient("")` to exit the method and prompt you to add your desired basic ingredient.
 
 ### Commit Changes
-4. After choosing the basic ingredient, commit your changes to your feature branch:
+4. After choosing the basic ingredient, commit your changes to your feature branch and then push them to your remote branch:
    ```
    git add .
    git commit -m "Added basic ingredient to my smoothie"
@@ -57,6 +58,54 @@ In the `main` method:
    git push origin yourName-smoothie
    ```
 8. Open another merge request (MR) to the main branch to see new conflicts.
+
+### PLay with Rebase 
+Even though in git projects, the rebase usually happens after main branch, you can rebase 
+your smoothie after your friend's. Ask your friend to push their changes 
+in their branch and after you fetch, rebase with:
+   ```
+      git rebase -i origin/friendName-smoothie
+   ```
+After running the command, an editor will open with a list of your commits. To continue your rebase use:
+   ```
+      :qa <ENTER>
+   ```
+You will be logged with what **merge conflicts** there are (if there are so). In this case:
+If there are conflicts during the rebase, Git will pause the rebase process and notify you.
+
+1. Open the conflicted file(s) in your code editor. You will see conflict markers like:
+
+   ```
+   <<<<<<< HEAD
+   This is the content of the file on your branch.
+   =======
+   This is the conflicting content from the branch you are rebasing onto.
+   >>>>>>> parent-branch
+   ```
+
+   - `<<<<<<< HEAD`: This marks the beginning of the conflicting changes on your branch _(yours)_.
+   - `=======`: Separates your changes from the incoming changes.
+   - `>>>>>>> parent-branch`: This marks the end of the conflicting changes from the branch you are rebasing onto _(others)_.
+
+2. Resolve the conflict by editing the file to keep the changes you want. Remove the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) and any unnecessary code.
+
+3. After resolving conflicts, add the resolved files:
+
+   ```
+   git add <resolved-file>
+   ```
+Then continue your rebase with:
+   ```
+      git rebase --continue
+   ```
+This also is needed when there are no conflicts, to finalize your rebase.
+
+To have your changes in the remote repo, push them with:
+   ```
+      git push -f origin
+   ```
+_The -f (--force) flag, overrides the remote branch's history, so 
+in other cases you have tobe sure for your changes before using it._
 
 ## Additional Notes
 - Resolve conflicts: Learn how Git helps manage conflicts when merging branches.
